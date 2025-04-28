@@ -1,4 +1,5 @@
 #include "DxLib.h"
+#include "Player.h"
 
 namespace
 {
@@ -41,12 +42,15 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 {
 	DxInit();
 
+	Player* player = new Player();
+
 	while (true)
 	{
 		ClearDrawScreen();
 
 		//‚±‚±‚É‚â‚è‚½‚¢ˆ—‚ð‘‚­
-
+		player->Update();
+		player->Draw();
 
 		ScreenFlip();
 		WaitTimer(16);
