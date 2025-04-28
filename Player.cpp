@@ -1,13 +1,17 @@
 #include "Player.h"
 #include "DxLib.h"
+#include "globals.h"
+#include "Input.h"
+#include <assert.h>
 
 namespace
 {
-	const float PLAYER_INIT_X = 0.0f;//プレイヤーの初期X座標
-	const float PLAYER_INIT_Y = 0.0f;//プレイヤーの初期Y座標
+	const int PLAYER_IMAGE_WIDTH = 48;//プレイヤーの画像の幅
+	const int PLAYER_IMAGE_HEIGHT = 48;//プレイヤーの画像の高さ
+	const int PLAYER_BASE_MARGIN = 32;//プレイヤーの基準マージン
+	const float PLAYER_INIT_X = WIN_WIDTH / 2 - PLAYER_IMAGE_WIDTH;//プレイヤーの初期X座標
+	const float PLAYER_INIT_Y = WIN_HEIGHT - PLAYER_IMAGE_HEIGHT - PLAYER_BASE_MARGIN;//プレイヤーの初期Y座標
 	const float PLAYER_INIT_SPEED = 5.0f;//プレイヤーの初期移動速度
-	const int PLAYER_IMAGE_WIDTH = 64;//プレイヤーの画像の幅
-	const int PLAYER_IMAGE_HEIGHT = 64;//プレイヤーの画像の高さ
 }
 
 Player::Player()
@@ -17,6 +21,7 @@ Player::Player()
 	x_ = PLAYER_INIT_X;
 	y_ = PLAYER_INIT_Y;
 	speed_ = PLAYER_INIT_SPEED;
+	assert(hImage_ > 0);
 }
 
 Player::~Player()
@@ -25,6 +30,14 @@ Player::~Player()
 
 void Player::Update()
 {
+	if (Input::IsKeepKeyDown(KEY_INPUT_LEFT))
+	{
+		x_ -= speed_ * GetDeltaTime();//左に移動
+	}
+	if (Input::IsKeepKeyDown(KEY_INPUT_RIGHT))
+	{
+		x_ += speed_ * GetDeltaTime();//右に移動
+	}
 }
 
 void Player::Draw()
