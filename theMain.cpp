@@ -1,8 +1,8 @@
 #include "DxLib.h"
 #include "globals.h"
-#include "Enemy.h"
-#include "Player.h"
 #include "Input.h"
+#include <vector>
+#include "Stage.h"
 
 namespace
 {
@@ -41,20 +41,31 @@ void MyGame()
 	DrawFormatString(100, 150, GetColor(0, 0, 0), "%010d", timer);
 }
 
-
-
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
 {
 	DxInit();
 	crrTime = GetNowCount();
 	prevTime = GetNowCount();
 
-	Player* player = new Player();
-	Enemy* enemy = new Enemy[10];
-	for (int i = 0;i < 10;i++)
-	{
-		enemy[i].SetPos(100 + i * 50, 100);
-	}
+	//Player* player = new Player();
+	//Enemy* enemy = new Enemy[ENEMY_NUM];
+	//for (int i = 0;i < ENEMY_NUM;i++)
+	//{
+	//	enemy[i].SetPos(100 + i * 50, 100);
+	//}
+	//std::vector<Enemy> enemy(ENEMY_NUM);
+	//for (int i = 0;i < ENEMY_NUM;i++)
+	//{
+	//	enemy[i].SetPos(100 + i * 50, 100);
+	//}
+	//int i = 0;
+	//for (auto& e : enemy)
+	//{
+	//	e.SetPos(100 + i * 50, 100);
+	//	i++;
+	//}
+
+	Stage* stage = new Stage();//ステージオブジェクトの生成
 
 	while (true)
 	{
@@ -67,16 +78,21 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		gDeltaTime = deltaTime;
 
 		//ここにやりたい処理を書く
-		player->Update();
-		player->Draw();
+		stage->Update();
+		stage->Draw();
 
-		for (int i = 0;i < 10;i++)
-		{
-			(enemy + i)->Update();
-			(enemy + i)->Draw();
-			//enemy[i].Update();
-			//enemy[i].Draw();
-		}
+		//for (auto& elm : enemy)
+		//{
+		//	elm.Update();
+		//	elm.Draw();
+		//}
+		//for (int i = 0;i < 10;i++)
+		//{
+		//	(enemy + i)->Update();
+		//	(enemy + i)->Draw();
+		//	//enemy[i].Update();
+		//	//enemy[i].Draw();
+		//}
 
 		ScreenFlip();
 		WaitTimer(16);

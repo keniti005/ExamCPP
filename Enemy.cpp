@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "DxLib.h"
+#include <string>
 #include <assert.h>
 
 namespace
@@ -22,6 +23,27 @@ Enemy::Enemy()
 	speed_ = ENEMY_INIT_SPEED;//移動速度
 }
 
+Enemy::Enemy(int id, ETYPE type)
+	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), isAlive_(true),ID_(id),type_(type)
+{
+	std::string imagePath[MAX_ETYPE] = 
+	{
+		"Assets\\tiny_ship10.png",
+		"Assets\\tiny_ship18.png",
+		"Assets\\tiny_ship16.png",
+		"Assets\\tiny_ship9.png"
+	};
+
+	hImage_ = LoadGraph(imagePath[type_].c_str());
+	assert(hImage_ > 0);
+	x_ = ENEMY_INIT_X;//初期座標
+	y_ = ENEMY_INIT_Y;//初期座標
+	speed_ = ENEMY_INIT_SPEED;//移動速度
+	//初期化をする必要がある
+	//ID_ = ;
+	//type_ = ;
+}
+
 Enemy::~Enemy()
 {
 	if (hImage_ != -1)
@@ -37,5 +59,4 @@ void Enemy::Update()
 void Enemy::Draw()
 {
 	DrawExtendGraph(x_, y_, x_ + ENEMY_IMAGE_WIDTH, y_ + ENEMY_IMAGE_HEIGHT, hImage_, TRUE);
-
 }
