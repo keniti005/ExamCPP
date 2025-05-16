@@ -22,6 +22,7 @@ Player::Player()
 	y_ = PLAYER_INIT_Y;
 	speed_ = PLAYER_INIT_SPEED;
 	assert(hImage_ > 0);
+	AddGameObject(this);
 }
 
 Player::~Player()

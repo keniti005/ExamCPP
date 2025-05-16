@@ -42,6 +42,7 @@ Enemy::Enemy(int id, ETYPE type)
 	//‰Šú‰»‚ğ‚·‚é•K—v‚ª‚ ‚é
 	//ID_ = ;
 	//type_ = ;
+	AddGameObject(this);
 }
 
 Enemy::~Enemy()

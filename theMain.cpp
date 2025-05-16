@@ -11,6 +11,9 @@ namespace
 	int prevTime;
 }
 
+std::vector<GameObject*> gameObjects;//ゲームオブジェクトのベクター
+std::vector<GameObject*> newObjects;
+
 
 float gDeltaTime = 0.0f;//フレーム間の時間差
 
@@ -78,8 +81,25 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		gDeltaTime = deltaTime;
 
 		//ここにやりたい処理を書く
-		stage->Update();
-		stage->Draw();
+		if (newObjects.size() > 0)
+		{
+			for (auto& obj : newObjects)
+			{
+				gameObjects.push_back(obj);//新しいゲームオブジェクトを追加
+			}
+			newObjects.clear();//新しいオブジェクトのベクタークリア
+		}
+
+		//gameObjectsの更新
+		for (auto& obj : gameObjects)
+		{
+			obj->Update();
+		}
+		//gameObjectsの描画
+		for (auto& obj : gameObjects)
+		{
+			obj->Draw();
+		}
 
 		//for (auto& elm : enemy)
 		//{
