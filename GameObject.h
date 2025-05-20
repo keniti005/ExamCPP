@@ -3,11 +3,14 @@
 
 class GameObject
 {
+protected:
+	bool isAlive_;
 public:
 	GameObject();
 	virtual ~GameObject();
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
+	bool IsAlive() { return isAlive_; }
 };
 
 extern std::vector<GameObject*> gameObjects;

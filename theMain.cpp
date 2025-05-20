@@ -101,6 +101,18 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			obj->Draw();
 		}
 
+		for (auto it = gameObjects.begin();it != gameObjects.end();)
+		{
+			if (!(*it)->IsAlive())
+			{
+				delete* it;//ゲームオブジェクトを削除
+				it = gameObjects.erase(it);
+			}
+			else
+			{
+				it++;//次の要素へ
+			}
+	}
 		//for (auto& elm : enemy)
 		//{
 		//	elm.Update();
