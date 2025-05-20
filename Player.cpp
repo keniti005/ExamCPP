@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "globals.h"
 #include "Input.h"
+#include "Bullet.h"
 #include <assert.h>
 
 namespace
@@ -39,6 +40,11 @@ void Player::Update()
 	if (Input::IsKeepKeyDown(KEY_INPUT_RIGHT))
 	{
 		x_ = x_ + speed_ * dt;//‰E‚ÉˆÚ“®
+	}
+
+	if (Input::IsKeyDown(KEY_INPUT_SPACE))
+	{
+		new Bullet(x_,y_);//’e‚ð”­ŽË
 	}
 }
 
