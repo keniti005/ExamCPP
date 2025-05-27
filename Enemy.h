@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "globals.h"
 
 enum ETYPE
 {
@@ -21,6 +22,7 @@ public:
     void Update() override;
     void Draw() override;
     void SetPos(float x, float y) { x_ = x, y_ = y; }//“G‚ÌÀ•W‚ğİ’è
+    Rect GetRect() const { return{ x_,y_,ENEMY_IMAGE_WIDTH,ENEMY_IMAGE_HEIGHT }; }
 //    void SetID(int id) { ID_ = id; }//“G‚ÌID‚ğİ’è
 };
 

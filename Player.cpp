@@ -18,6 +18,7 @@ namespace
 	const int PLAYER_BULLET_NUM = 5;//ƒvƒŒƒCƒ„[‚ª“¯‚É”­Ë‚Å‚«‚é’e‚Ì”
 }
 
+
 Player::Player()
 	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0)
 {
@@ -60,7 +61,8 @@ void Player::Update()
 	{
 		if (bulletTimer <= 0.0f)
 		{
-			new Bullet(x_ + BULLET_IMAGE_MARGIN, y_);//’e‚ğ”­Ë
+			Shoot();//’e‚ğ”­Ë
+			//new Bullet(x_ + BULLET_IMAGE_MARGIN, y_);//’e‚ğ”­Ë
 			bulletTimer = BULLET_INTERVAL;//’e‚Ì”­ËŠ´Šo‚ğƒŠƒZƒbƒg
 		}
 	}
@@ -70,4 +72,37 @@ void Player::Draw()
 {
 	//ƒvƒŒƒCƒ„[‚Ì‰æ‘œ‚ğ•`‰æ
 	DrawExtendGraphF(x_, y_, x_ + PLAYER_IMAGE_WIDTH, y_ + PLAYER_IMAGE_HEIGHT, hImage_, TRUE);
+}
+
+//’e‚ğŒ‚‚ÂŠÖ”
+void Player::Shoot()
+{
+	//for (auto& itr : bullets_)
+	//{
+	//	if (itr->IsFired() == false)
+	//	{
+	//		itr->SetPos(x_ + BULLET_IMAGE_MARGIN, y_);
+	//		itr->SetFired(true);
+	//		break;
+	//	}
+	//}
+	
+	Bullet* bit = GetActiveBullet();
+	if (bit != nullptr)
+	{
+		bit->SetPos(x_ + BULLET_IMAGE_MARGIN, y_);
+		bit->SetFired(true);//’e‚ğ”­Ëó‘Ô‚É‚·‚é
+	}
+}
+
+Bullet* Player::GetActiveBullet()
+{
+	for (auto& itr : bullets_)
+	{
+		if (!itr->IsFired())
+		{
+			return itr;
+		}
+	}
+	return nullptr;
 }

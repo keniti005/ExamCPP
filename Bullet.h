@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "globals.h"
+
 class Bullet :
     public GameObject
 {
@@ -19,5 +21,6 @@ public:
     void SetPos(float x, float y);
     void SetFired(bool fired) { isFired_ = fired; }//”­Ëó‘Ô‚ğİ’è
     bool IsFired() const { return isFired_; }//”­Ëó‘Ô‚ğæ“¾
+    Rect GetRect() const { return{ x_,y_,13.0f,33.0f }; }
 };
 

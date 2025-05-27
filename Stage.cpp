@@ -33,18 +33,8 @@ Stage::~Stage()
 
 void Stage::Update()
 {
-	player_->Update();
-	for (auto& elm : enemy_)
-	{
-		elm->Update();
-	}
 }
 
 void Stage::Draw()
 {
-	player_->Draw();
-	for (auto& elm : enemy_)
-	{
-		elm->Draw();//“G‚Ì•`‰æ
-	}
 }
