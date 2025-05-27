@@ -112,7 +112,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			{
 				it++;//ŽŸ‚Ì—v‘f‚Ö
 			}
-	}
+		}
 		//for (auto& elm : enemy)
 		//{
 		//	elm.Update();

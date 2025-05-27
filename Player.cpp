@@ -15,6 +15,7 @@ namespace
 	const float PLAYER_INIT_SPEED = 200.0f;//プレイヤーの初期移動速度
 	const int BULLET_IMAGE_MARGIN = 17;//弾の画像のマージン
 	const float BULLET_INTERVAL = 0.5f;//弾の発射間隔
+	const int PLAYER_BULLET_NUM = 5;//プレイヤーが同時に発射できる弾の数
 }
 
 Player::Player()
@@ -24,6 +25,11 @@ Player::Player()
 	x_ = PLAYER_INIT_X;
 	y_ = PLAYER_INIT_Y;
 	speed_ = PLAYER_INIT_SPEED;
+	for (int i = 0;i < PLAYER_BULLET_NUM;i++)
+	{
+		bullets_.push_back(new Bullet());//弾のベクターを初期化
+	}
+
 	assert(hImage_ > 0);
 	AddGameObject(this);
 }
@@ -63,5 +69,5 @@ void Player::Update()
 void Player::Draw()
 {
 	//プレイヤーの画像を描画
-	DrawExtendGraph(x_, y_, x_ + PLAYER_IMAGE_WIDTH, y_ + PLAYER_IMAGE_HEIGHT, hImage_, TRUE);
+	DrawExtendGraphF(x_, y_, x_ + PLAYER_IMAGE_WIDTH, y_ + PLAYER_IMAGE_HEIGHT, hImage_, TRUE);
 }

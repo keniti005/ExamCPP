@@ -14,7 +14,7 @@ const float ENEMY_INIT_SPEED = 100.0f;//“G‚Ì‰ŠúˆÚ“®‘¬“x
 }
 
 Enemy::Enemy()
-	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), isAlive_(true)
+	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0)
 {
 	hImage_ = LoadGraph("Assets\\tiny_ship10.png");
 	assert(hImage_ > 0);
@@ -24,7 +24,7 @@ Enemy::Enemy()
 }
 
 Enemy::Enemy(int id, ETYPE type)
-	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), isAlive_(true),ID_(id),type_(type)
+	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), ID_(id), type_(type)
 {
 	std::string imagePath[MAX_ETYPE] = 
 	{
@@ -59,5 +59,5 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	DrawExtendGraph(x_, y_, x_ + ENEMY_IMAGE_WIDTH, y_ + ENEMY_IMAGE_HEIGHT, hImage_, TRUE);
+	DrawExtendGraphF(x_, y_, x_ + ENEMY_IMAGE_WIDTH, y_ + ENEMY_IMAGE_HEIGHT, hImage_, TRUE);
 }

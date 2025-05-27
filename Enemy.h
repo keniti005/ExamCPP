@@ -12,7 +12,6 @@ class Enemy :
     int hImage_;//“G‚Ì‰æ‘œƒnƒ“ƒhƒ‹
     float x_, y_;//“G‚ÌÀ•W
     float speed_;//“G‚ÌˆÚ“®‘¬“x
-    bool isAlive_;//“G‚Ì¶€
     int ID_;//“G‚ÌID
     ETYPE type_;
 public:
