@@ -14,7 +14,7 @@ const float ENEMY_INIT_SPEED = 100.0f;//“G‚Ì‰ŠúˆÚ“®‘¬“x
 }
 
 Enemy::Enemy()
-	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0)
+	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), imageSize_({ ENEMY_IMAGE_WIDTH ,ENEMY_IMAGE_HEIGHT })
 {
 	hImage_ = LoadGraph("Assets\\tiny_ship10.png");
 	assert(hImage_ > 0);
