@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "DxLib.h"
+#include "Effect.h"
 #include <string>
 #include <assert.h>
 
@@ -24,7 +25,7 @@ Enemy::Enemy()
 }
 
 Enemy::Enemy(int id, ETYPE type)
-	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), ID_(id), type_(type)
+	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), ID_(id), type_(type), imageSize_({ ENEMY_IMAGE_WIDTH ,ENEMY_IMAGE_HEIGHT })
 {
 	std::string imagePath[MAX_ETYPE] = 
 	{
@@ -47,6 +48,7 @@ Enemy::Enemy(int id, ETYPE type)
 
 Enemy::~Enemy()
 {
+	new Effect({ x_,y_ });
 	if (hImage_ != -1)
 	{
 		DeleteGraph(hImage_);//‰æ‘œ‚Ìƒnƒ“ƒhƒ‹‰ð•ú

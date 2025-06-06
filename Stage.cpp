@@ -59,7 +59,6 @@ void Stage::Update()
 					}
 					if (e->IsAlive())
 					{
-
 						e->SetAlive(false);
 					}
 
@@ -71,7 +70,7 @@ void Stage::Update()
 
 void Stage::Draw()
 {
-	//SetDrawBlendMode(DX_BLENDMODE_ALPHA, 200);
-	//DrawExtendGraph(0, 0, WIN_WIDTH, WIN_HEIGHT, hBackgraound,FALSE);
-	//SetDrawBlendMode(DX_BLENDMODE_ALPHA, 0);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 200);
+	DrawExtendGraph(0, 0, WIN_WIDTH, WIN_HEIGHT, hBackgraound,FALSE);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }

@@ -25,8 +25,6 @@ Bullet::Bullet(float x, float y)
 	hImage_ = LoadGraph(BULLET_IMAGE_PATH.c_str());//’e‚Ì‰æ‘œ‚ğ“Ç‚İ‚Ş
 	speed_ = BULLET_INIT_SPEED;//ˆÚ“®‘¬“xx
 	isFired_ = LoadGraph(BULLET_IMAGE_PATH.c_str());
-	x_ = x;
-	y_ = y;
 	AddGameObject(this);
 }
 
