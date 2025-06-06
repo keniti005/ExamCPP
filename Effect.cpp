@@ -49,5 +49,5 @@ void Effect::Update()
 
 void Effect::Draw()
 {
-	DrawExtendGraph(pos_.x, pos_.y, pos_.x + EFFECT_IMAGE_SIZE, pos_.y + EFFECT_IMAGE_SIZE, hImage_[frame_], TRUE);
+ 	DrawExtendGraph(pos_.x, pos_.y, pos_.x + EFFECT_IMAGE_SIZE, pos_.y + EFFECT_IMAGE_SIZE, hImage_[frame_], TRUE);
 }

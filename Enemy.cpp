@@ -12,10 +12,12 @@ const int PLAYER_BASE_MARGIN = 32;//“G‚ÌŠî€ƒ}[ƒWƒ“
 const float ENEMY_INIT_X = 100;//“G‚Ì‰ŠúXÀ•W
 const float ENEMY_INIT_Y = 100;//“G‚Ì‰ŠúYÀ•W
 const float ENEMY_INIT_SPEED = 100.0f;//“G‚Ì‰ŠúˆÚ“®‘¬“x
+const float ENEMY_MOVE_TIME = { 5.0f };
+
 }
 
 Enemy::Enemy()
-	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), imageSize_({ ENEMY_IMAGE_WIDTH ,ENEMY_IMAGE_HEIGHT })
+	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), imageSize_({ ENEMY_IMAGE_WIDTH ,ENEMY_IMAGE_HEIGHT }),moveTimer_(ENEMY_MOVE_TIME)
 {
 	hImage_ = LoadGraph("Assets\\tiny_ship10.png");
 	assert(hImage_ > 0);
@@ -25,7 +27,7 @@ Enemy::Enemy()
 }
 
 Enemy::Enemy(int id, ETYPE type)
-	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), ID_(id), type_(type), imageSize_({ ENEMY_IMAGE_WIDTH ,ENEMY_IMAGE_HEIGHT })
+	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), ID_(id), type_(type), imageSize_({ ENEMY_IMAGE_WIDTH ,ENEMY_IMAGE_HEIGHT }), moveTimer_(ENEMY_MOVE_TIME)
 {
 	std::string imagePath[MAX_ETYPE] = 
 	{
@@ -57,6 +59,19 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
+	//float dt = GetDeltaTime();
+	//moveTimer_ = moveTimer_ - dt;
+	//if (moveTimer_ < 0)
+	//{
+	//	x_ = x_ - 0.5;
+	//}
+	//else
+	//{
+	//	x_ = x_ + 0.5f;
+	//}
+
+	x_ = x_ + 0.5f;
+	y_ = y_;
 }
 
 void Enemy::Draw()

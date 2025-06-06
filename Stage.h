@@ -15,7 +15,7 @@ private:
 public:
     Stage();
     ~Stage();
-    void Update()override;
+    void Update() override;
     void Draw() override;
 };
 
