@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "DxLib.h"
 #include "Effect.h"
+#include "EnemyBeam.h"
 #include <string>
 #include <assert.h>
 
@@ -17,7 +18,7 @@ const float ENEMY_MOVE_TIME = { 5.0f };
 }
 
 Enemy::Enemy()
-	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), imageSize_({ ENEMY_IMAGE_WIDTH ,ENEMY_IMAGE_HEIGHT }),moveTimer_(ENEMY_MOVE_TIME)
+	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), imageSize_({ ENEMY_IMAGE_WIDTH ,ENEMY_IMAGE_HEIGHT }),moveTime_(ENEMY_MOVE_TIME)
 {
 	hImage_ = LoadGraph("Assets\\tiny_ship10.png");
 	assert(hImage_ > 0);
@@ -27,7 +28,7 @@ Enemy::Enemy()
 }
 
 Enemy::Enemy(int id, ETYPE type)
-	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), ID_(id), type_(type), imageSize_({ ENEMY_IMAGE_WIDTH ,ENEMY_IMAGE_HEIGHT }), moveTimer_(ENEMY_MOVE_TIME)
+	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), ID_(id), type_(type), imageSize_({ ENEMY_IMAGE_WIDTH ,ENEMY_IMAGE_HEIGHT }), moveTime_(ENEMY_MOVE_TIME)
 {
 	std::string imagePath[MAX_ETYPE] = 
 	{
@@ -70,8 +71,19 @@ void Enemy::Update()
 	//	x_ = x_ + 0.5f;
 	//}
 
+	//float period = 10.0f;
+	//float omega = 2.0f * 3.14159265f / period;
+	//moveTime_ = moveTime_ + GetDeltaTime();
+
+	static float beamTimer = 3.0f;//弾の発射タイマー
+
 	x_ = x_ + 0.5f;
 	y_ = y_;
+	//if (beamTimer < 0)
+	//{
+	//	new EnemyBeam(x_ + ENEMY_IMAGE_WIDTH / 2, y_ + ENEMY_IMAGE_HEIGHT);
+	//}
+	//beamTimer -= GetDeltaTime();
 }
 
 void Enemy::Draw()

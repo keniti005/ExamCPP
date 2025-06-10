@@ -8,14 +8,16 @@ class Enemy;//前方宣言
 class Stage :
     public GameObject
 {
-private:
-    Player* player_;//プレイヤーオブジェクト
-    std::vector<Enemy*> enemy_;//敵オブジェクト
-    int hBackgraound;
 public:
     Stage();
     ~Stage();
     void Update() override;
     void Draw() override;
+protected:
+
+private:
+    Player* player_;//プレイヤーオブジェクト
+    std::vector<Enemy*> enemy_;//敵オブジェクト
+    int hBackgraound;
 };
 

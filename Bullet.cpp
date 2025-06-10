@@ -40,7 +40,7 @@ Bullet::~Bullet()
 void Bullet::Update()
 {
 	float dt = GetDeltaTime();
-	y_ = y_ - (speed_ * dt);//’e‚ÌˆÚ“®
+	y_ = y_ - speed_ * dt;//’e‚ÌˆÚ“®
 	if (y_ < 0)
 	{
 		isFired_ = false;//‰æ–Ê”ƒ‚¢‚Éo‚½‚ç’e‚ð€”õó‘Ô‚É‚·‚é

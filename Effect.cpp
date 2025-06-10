@@ -33,7 +33,7 @@ Effect::~Effect()
 void Effect::Update()
 {
 	float dt = GetDeltaTime();
-	animTimer_ = animTimer_ = dt;
+	animTimer_ = animTimer_ - dt;
 	if (animTimer_ < 0)
 	{
 		this->isAlive_ = false;

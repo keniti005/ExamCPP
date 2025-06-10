@@ -24,7 +24,7 @@ private:
     int hImage_;//“G‚Ì‰æ‘œƒnƒ“ƒhƒ‹
     float x_, y_;//“G‚ÌÀ•W
     float speed_;//“G‚ÌˆÚ“®‘¬“x
-    int moveTimer_;
+    int moveTime_;
     Point imageSize_;
 
     int ID_;//“G‚ÌID

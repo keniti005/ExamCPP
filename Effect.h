@@ -14,9 +14,8 @@ public:
 private:
     std::vector<int> hImage_;
     Point pos_;
-    int x_, y_;
     float animTimer_;
-    int frameTimer_;
+    float frameTimer_;
     int frame_;
 };
 
