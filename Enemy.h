@@ -22,7 +22,7 @@ public:
     Rect GetRect() const { return{ x_,y_,imageSize_.x,imageSize_.y }; }
     void SetMaxMovex(float xmax) { xMoveMax_ = xmax; }
     void SetXorigin(float x) { xorigin_ = x; }
-//    std::vector<EnemyBeam*> GetAllEnemyBeams() const { return EnemyBeams_; }//すべての弾を取得
+    std::vector<EnemyBeam*> GetAllEnemyBeams() const { return EnemyBeams_; }//すべての弾を取得
 
 //    void SetID(int id) { ID_ = id; }//敵のIDを設定
 protected:
@@ -36,7 +36,7 @@ private:
     float moveTime_;
     int ID_;//敵のID
     ETYPE type_;//敵の種類
-//  std::vector<EnemyBeam*> EnemyBeams_;//プレイヤーが発射した弾のベクター
-//    EnemyBeam* GetActiveBullet();
+    std::vector<EnemyBeam*> EnemyBeams_;//プレイヤーが発射した弾のベクター
+    EnemyBeam* GetActiveEnemyBeam();
 };
 

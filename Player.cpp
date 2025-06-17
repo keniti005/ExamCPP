@@ -37,6 +37,10 @@ Player::Player()
 
 Player::~Player()
 {
+	if (hImage_ != -1)
+	{
+		DeleteGraph(hImage_);//‰æ‘œ‚Ìƒnƒ“ƒhƒ‹‰ð•ú
+	}
 }
 
 void Player::Update()
