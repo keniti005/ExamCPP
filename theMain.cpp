@@ -3,6 +3,7 @@
 #include "Input.h"
 #include <vector>
 #include "Stage.h"
+#include "Scene.h"
 
 namespace
 {
@@ -69,6 +70,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	//}
 
 	Stage* stage = new Stage();//ステージオブジェクトの生成
+//	Scene* scene = new Scene();
 
 	while (true)
 	{

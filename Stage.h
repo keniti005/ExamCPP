@@ -18,6 +18,7 @@ protected:
 private:
     Player* player_;//プレイヤーオブジェクト
     std::vector<Enemy*> enemy_;//敵オブジェクト
+    Enemy* enemyBeam_;
     int hBackgraound;
 };
 

@@ -44,6 +44,7 @@ Stage::Stage()
 
 Stage::~Stage()
 {
+
 }
 
 void Stage::Update()
@@ -69,6 +70,7 @@ void Stage::Update()
 			}
 		}
 	}
+//	std::vector<EnemyBeam*> EnemyBeams = ;
 }
 
 void Stage::Draw()
