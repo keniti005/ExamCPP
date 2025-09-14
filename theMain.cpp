@@ -3,14 +3,22 @@
 #include "Input.h"
 #include <vector>
 #include "Stage.h"
-#include "Scene.h"
 
 namespace
 {
 	const int BGCOLOR[3] = { 0, 0, 0 };//背景色
 	int crrTime;
 	int prevTime;
+	int scene;
 }
+
+enum SCENE
+{
+	TITLE = 0, 
+	PLAY, 
+	OVER, 
+	MAX_SCENE
+};
 
 std::vector<GameObject*> gameObjects;//ゲームオブジェクトのベクター
 std::vector<GameObject*> newObjects;
@@ -69,7 +77,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	//	i++;
 	//}
 
-	Stage* stage = new Stage();//ステージオブジェクトの生成
 //	Scene* scene = new Scene();
 
 	while (true)
@@ -82,39 +89,67 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		float deltaTime = (crrTime - prevTime) / 1000.0f;
 		gDeltaTime = deltaTime;
 
-		//ここにやりたい処理を書く
-		if (newObjects.size() > 0)
+		switch (scene)
 		{
-			for (auto& obj : newObjects)
+		case TITLE:
+			DrawString(100, 400, "PLAY Push [T] Key",GetColor(255,255,255));
+			if (Input::IsKeyDown(KEY_INPUT_T))
 			{
-				gameObjects.push_back(obj);//新しいゲームオブジェクトを追加
+				Stage* stage = new Stage();//ステージオブジェクトの生成
+				scene = PLAY;
 			}
-			newObjects.clear();//新しいオブジェクトのベクタークリア
+			break;
+
+		case PLAY:
+			//ここにやりたい処理を書く
+			if (newObjects.size() > 0)
+			{
+				for (auto& obj : newObjects)
+				{
+					gameObjects.push_back(obj);//新しいゲームオブジェクトを追加
+				}
+				newObjects.clear();//新しいオブジェクトのベクタークリア
+			}
+
+			//gameObjectsの更新
+			for (auto& obj : gameObjects)
+			{
+				obj->Update();
+			}
+			//gameObjectsの描画
+			for (auto& obj : gameObjects)
+			{
+				obj->Draw();
+			}
+
+			for (auto it = gameObjects.begin();it != gameObjects.end();)
+			{
+				if (!(*it)->IsAlive())
+				{
+					delete* it;//ゲームオブジェクトを削除
+					it = gameObjects.erase(it);
+				}
+				else
+				{
+					it++;//次の要素へ
+				}
+			}
+			if (Input::IsKeyDown(KEY_INPUT_T))
+			{
+				scene = OVER;
+			}
+			break;
+		case OVER:
+			DrawString(100, 400, "TITLE Push [T] Key", GetColor(255, 255, 255));
+			if (Input::IsKeyDown(KEY_INPUT_T))
+			{
+				scene = TITLE;
+				newObjects.clear();
+				gameObjects.clear();
+			}
+			break;
 		}
 
-		//gameObjectsの更新
-		for (auto& obj : gameObjects)
-		{
-			obj->Update();
-		}
-		//gameObjectsの描画
-		for (auto& obj : gameObjects)
-		{
-			obj->Draw();
-		}
-
-		for (auto it = gameObjects.begin();it != gameObjects.end();)
-		{
-			if (!(*it)->IsAlive())
-			{
-				delete* it;//ゲームオブジェクトを削除
-				it = gameObjects.erase(it);
-			}
-			else
-			{
-				it++;//次の要素へ
-			}
-		}
 		//for (auto& elm : enemy)
 		//{
 		//	elm.Update();

@@ -9,8 +9,8 @@ namespace
 }
 
 EnemyBeam::EnemyBeam()
-	:GameObject(),hImage_(-1),pos_({-10,-10}),speed_(ENEMY_BEAM_INIT_SPEED),
-	isFired_(false),
+	:GameObject(),hImage_(-1),pos_({0,0}),speed_(ENEMY_BEAM_INIT_SPEED),
+	isFired_(true),
 	imageSize_({ ENEMY_BEAM_IMAGE_WIDTH,ENEMY_BEAM_IMAGE_HEIGHT})
 {
 	hImage_ = LoadGraph("Assets\\ebeams.png");//弾の画像を読みこっむ
@@ -51,7 +51,7 @@ void EnemyBeam::Update()
 	pos_.y = pos_.y + speed_ * dt;//弾の移動
 	if (pos_.y > WIN_HEIGHT)
 	{
-		isFired_ = false;//画面買いに出たら弾を準備状態にする
+		isFired_ = false;//画面外に出たら弾を準備状態にする
 		SetAlive(false);//ゲームオブジェクトを非アクティブにする
 	}
 }

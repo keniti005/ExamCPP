@@ -46,7 +46,6 @@ Stage::Stage()
 
 Stage::~Stage()
 {
-
 }
 
 void Stage::Update()
@@ -89,6 +88,7 @@ void Stage::Update()
 				}
 			}
 		}
+		int tmp = 0;
 	}
 }
 

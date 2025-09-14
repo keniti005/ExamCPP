@@ -14,7 +14,7 @@ const float ENEMY_INIT_X = 100;//敵の初期X座標
 const float ENEMY_INIT_Y = 100;//敵の初期Y座標
 const float ENEMY_INIT_SPEED = 100.0f;//敵の初期移動速度
 const float ENEMY_MOVE_TIME = { 5.0f };
-const int ENEMY_BEAM_NUM = 20;//敵が同時に発射できる弾の数
+const int ENEMY_BEAM_NUM = 50;//敵が同時に発射できる弾の数
 }
 
 Enemy::Enemy()
@@ -50,6 +50,10 @@ Enemy::Enemy(int id, ETYPE type)
 	//初期化をする必要がある
 	//ID_ = ;
 	//type_ = ;
+	for (int i = 0;i < ENEMY_BEAM_NUM;i++)
+	{
+		EnemyBeams_.push_back(new EnemyBeam());//弾のベクターを初期化
+	}
 
 
 	AddGameObject(this);

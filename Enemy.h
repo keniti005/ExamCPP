@@ -36,7 +36,7 @@ private:
     float moveTime_;
     int ID_;//敵のID
     ETYPE type_;//敵の種類
-    std::vector<EnemyBeam*> EnemyBeams_;//プレイヤーが発射した弾のベクター
+    std::vector<EnemyBeam*> EnemyBeams_;//敵が発射した弾のベクター
     EnemyBeam* GetActiveEnemyBeam();
 };
 
