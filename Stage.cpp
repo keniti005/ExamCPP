@@ -25,11 +25,10 @@ namespace
 }
 
 Stage::Stage()
-	:GameObject(), player_(nullptr), enemyBeam_(nullptr)
+	:GameObject(), player_(nullptr)
 {
 	AddGameObject(this);
 	player_ = new Player();
-	enemyBeam_ = new Enemy();
 	enemy_ = std::vector<Enemy*>(ENEMY_NUM);
 	for (int i = 0;i < ENEMY_NUM; i++)
 	{
@@ -70,25 +69,6 @@ void Stage::Update()
 				}
 			}
 		}
-	}
-	std::vector<EnemyBeam*> enemyBeams = enemyBeam_->GetAllEnemyBeams();
-	for (auto& b : enemyBeams)
-	{ 
-		if (b->IsFired() && player_->IsAlive())
-		{
-			if (IntersectRect(player_->GetRect(), b->GetRect()))
-			{
-				if (b->IsFired())
-				{
-					b->SetFired(false);
-				}
-				if (player_->IsAlive())
-				{
-					player_->SetAlive(false);
-				}
-			}
-		}
-		int tmp = 0;
 	}
 }
 

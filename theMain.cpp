@@ -92,8 +92,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		switch (scene)
 		{
 		case TITLE:
-			DrawString(100, 400, "PLAY Push [T] Key",GetColor(255,255,255));
-			if (Input::IsKeyDown(KEY_INPUT_T))
+			DrawString(100, 400, "PLAY Push [P] Key",GetColor(255,255,255));
+			if (Input::IsKeyDown(KEY_INPUT_P))
 			{
 				Stage* stage = new Stage();//ステージオブジェクトの生成
 				scene = PLAY;

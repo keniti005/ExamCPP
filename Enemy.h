@@ -22,7 +22,6 @@ public:
     Rect GetRect() const { return{ x_,y_,imageSize_.x,imageSize_.y }; }
     void SetMaxMovex(float xmax) { xMoveMax_ = xmax; }
     void SetXorigin(float x) { xorigin_ = x; }
-    std::vector<EnemyBeam*> GetAllEnemyBeams() const { return EnemyBeams_; }//‚·‚×‚Ä‚Ì’e‚ğæ“¾
 
 //    void SetID(int id) { ID_ = id; }//“G‚ÌID‚ğİ’è
 protected:
@@ -36,7 +35,5 @@ private:
     float moveTime_;
     int ID_;//“G‚ÌID
     ETYPE type_;//“G‚Ìí—Ş
-    std::vector<EnemyBeam*> EnemyBeams_;//“G‚ª”­Ë‚µ‚½’e‚ÌƒxƒNƒ^[
-    EnemyBeam* GetActiveEnemyBeam();
 };
 
